@@ -1,23 +1,21 @@
-import logo from './logo.svg';
 import './App.css';
+// import stations from "./stations.json";
+// import trains from "./trains.json";
+
+const getData = async (url) => {
+  const response = await fetch(url)
+  const data = await response.json();
+  console.log(data)
+}
+
 
 function App() {
+  getData('/public/data/stations.json')
+  getData('/public/data/trains.json')
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+<h1>Train Schedule</h1>
+<h5>no need to be late, always use trains app!</h5>
     </div>
   );
 }
