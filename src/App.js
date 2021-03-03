@@ -10,8 +10,8 @@ const getData = async (url) => {
 
 
 function App() {
-  getData('/public/data/stations.json')
-  getData('/public/data/trains.json')
+  getData('/data/stations.json')
+  getData('/data/trains.json')
   return (
     <div className="App">
 <h1>Train Schedule</h1>
