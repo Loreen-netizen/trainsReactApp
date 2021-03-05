@@ -1,6 +1,6 @@
 import './App.css';
 import Header from "../Header/Header"
-
+import Stations from "../Stations/Stations"
 
 // const GetTrains = async () => {
 
@@ -19,18 +19,17 @@ const App = () => {
 
     const stationsData = await stationsResponse.json();
     const trainsData = await trainsRespnse.json();
-    console.log (stationsData);
-    console.log (trainsData);
+    console.log(stationsData);
+    console.log(trainsData);
 
   }
 
   return (
-    <div className="App">
-      <Header/>
-      {/* <ul>
-        <GetTrains props={trainsObject}></GetTrains>
-      </ul> */}
-{/* <button onClick = {getData}>logData</button> */}
+    <div>
+
+      <Header />
+      <Stations />
+      <button onClick = {getData}>logData</button>
 
     </div>
   );

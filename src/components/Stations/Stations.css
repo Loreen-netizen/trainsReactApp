@@ -1,0 +1,10 @@
+.stationsList{
+    list-style: none;
+    margin: 3em;
+    padding-left: 5em;
+
+}
+
+.listItems{
+    padding:1em;
+}
