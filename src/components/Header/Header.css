@@ -1,10 +1,10 @@
 .header{
-    padding: 2em;
+    padding: 1.5em;
     text-align: center;
     border-bottom: 2px solid rgb(18, 83, 18);
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-weight: 800;
-    font-size: large;
+    font-size: x-large;
     background-color: rgb(223, 255, 235);
     width: 60%;
 }

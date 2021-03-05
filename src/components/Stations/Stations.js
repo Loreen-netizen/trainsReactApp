@@ -1,6 +1,6 @@
 import "./Stations.css"
 import { useEffect, useState } from "react";
-
+import StationIcon from "../StationIcon/StationIcon"
 const Stations = () => {
 
     const [data, setData] = useState(null);
@@ -17,11 +17,13 @@ const Stations = () => {
     if (!data) {
         return (
             <ul className="stationsList">
-                <li className="listItems"> Loading stations.....</li>
-                <li className="listItems"> Loading stations.....</li>
-                <li className="listItems"> Loading stations.....</li>
-                <li className="listItems"> Loading stations.....</li>
-                <li className="listItems"> Loading stations.....</li>
+                <li className="listItems"><StationIcon/> Loading stations.....</li>
+                <li className="listItems"><StationIcon/> Loading stations.....</li>
+                <li className="listItems"><StationIcon/> Loading stations.....</li>
+                <li className="listItems"><StationIcon/> Loading stations.....</li>
+                <li className="listItems"><StationIcon/> Loading stations.....</li>
+                <li className="listItems"><StationIcon/> Loading stations.....</li>
+               
             </ul>)
 
     }
@@ -29,13 +31,15 @@ const Stations = () => {
 
         <div>
 
-            <ul>
+            <ul className="stationsList">
                 {
-                    // Object
-                    //     .keys(data)
-                    //     .map(id => data[id])
-                    //     .map(name => <li key={name}>{name}</li>)
-                    Object.keys(data).map(id => data[id]).map(name => <li key={name}>{name}</li>)
+                    Object
+                    .keys(data)
+                    .map(id => ({
+                        id,
+                        name: data[id]
+                    }))
+                    .map(({id,name}) => <li className="listItems" key={id}><StationIcon/>{name}</li>)
                 }
 
             </ul>
