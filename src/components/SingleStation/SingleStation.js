@@ -1,17 +1,37 @@
 import "./SingleStation.css";
-import {
-    HashRouter,
-    Switch,
-    Route,
-   useParams
-  } from "react-router-dom";
+import { useEffect, useState } from "react";
 
-const SingleStation = ()=>{
-    const {id} = useParams()
-    return(
+// import {
+//     HashRouter,
+//     Switch,
+//     Route,
+//     useParams
+// } from "react-router-dom";
+
+const SingleStation = () => {
+
+    const [trains, setTrains] = useState(null);
+
+    const getData = async () => {
+        const response = await fetch("/data/trains.json");
+        const data = await response.json();
+        console.log(data);
+       
+        setTrains(data)
+    }
+    
+
+    useEffect(() => getData(), [],)
+    
+    // const { id } = useParams()
+
+    return (
         <div>
-        you are loking at station: {id}
+            <ul>
+            {Object.keys(trains).map(letter => <li> Train {letter} </li>)}
+        </ul>
         </div>
+        
     )
 }
 

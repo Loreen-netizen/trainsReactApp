@@ -3,18 +3,18 @@ import { useEffect, useState } from "react";
 import StationIcon from "../StationIcon/StationIcon"
 const Stations = () => {
 
-    const [data, setData] = useState(null);
+    const [stations, setStations] = useState(null);
 
     const getData = async () => {
         const response = await fetch("/data/stations.json");
         const data = await response.json()
         console.log(data)
-        setData(data)
+        setStations(data)
     }
 
     useEffect(() => getData(), [],)
 
-    if (!data) {
+    if (!stations) {
         return (
             <ul className="stationsList">
                 <li className="listItems"><StationIcon/> Loading stations.....</li>
@@ -34,10 +34,10 @@ const Stations = () => {
             <ul className="stationsList">
                 {
                     Object
-                    .keys(data)
+                    .keys(stations)
                     .map(id => ({
                         id,
-                        name: data[id]
+                        name: stations[id]
                     }))
                     .map(({id,name}) => <li className="listItems" key={id}><StationIcon/><a href={`#/station/${id}`} className="stationLink">{name}</a></li>)
                 }
