@@ -1,0 +1,19 @@
+.trainsList {
+  list-style: none;
+  margin: 3em;
+  padding-left: 5em;
+}
+
+.listItems {
+  padding: 1em;
+  font-size: x-large;
+}
+
+.trainsLink {
+  color: black;
+  text-decoration: none;
+}
+
+.trainsLink:hover {
+  background: rgb(185, 235, 250);
+}

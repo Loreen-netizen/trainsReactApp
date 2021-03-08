@@ -9,30 +9,42 @@ import { useEffect, useState } from "react";
 // } from "react-router-dom";
 
 const SingleStation = () => {
+  const [trains, setTrains] = useState(null);
 
-    const [trains, setTrains] = useState(null);
+  const getData = async () => {
+    const response = await fetch("/data/trains.json");
+    const data = await response.json();
+    console.log(data);
 
-    const getData = async () => {
-        const response = await fetch("/data/trains.json");
-        const data = await response.json();
-        console.log(data);
-       
-        setTrains(data)
-    }
-    
+    setTrains(data);
+  };
 
-    useEffect(() => getData(), [],)
-    
-    // const { id } = useParams()
+  useEffect(() => getData(), []);
 
+  // const { id } = useParams()
+  if (!trains) {
     return (
-        <div>
-            <ul>
-            {Object.keys(trains).map(letter => <li> Train {letter} </li>)}
-        </ul>
-        </div>
-        
-    )
-}
+      <ul>
+        <li className="trainsList"> Loading trains.....</li>
+        <li className="trainsList"> Loading trains.....</li>
+        <li className="trainsList"> Loading trains.....</li>
+        <li className="trainsList"> Loading trains.....</li>
+        <li className="trainsList"> Loading trains.....</li>
+      </ul>
+    );
+  }
+
+  return (
+    <div>
+      <ul>
+        {Object.keys(trains).map((letter) => (
+          <li className="trainsList" key={letter}>
+            Train {letter}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
 
 export default SingleStation;

@@ -1,33 +1,25 @@
-import './App.css';
-import Header from "../Header/Header"
-import Stations from "../Stations/Stations"
-import SingleStation from "../SingleStation/SingleStation"
+import "./App.css";
+import Header from "../Header/Header";
+import Stations from "../Stations/Stations";
+import SingleStation from "../SingleStation/SingleStation";
 
 import React from "react";
-import {
-  HashRouter,
-  Switch,
-  Route,
-} from "react-router-dom";
+import { HashRouter, Switch, Route } from "react-router-dom";
 
 const App = () => {
   return (
     <div>
-    <Header />
-    <HashRouter>
-      <Switch>
-  
-        <Route path="/station/:id" children={<SingleStation/>}/>
-          
+      <Header />
+      <HashRouter>
+        <Switch>
+          <Route path="/station/:id" children={<SingleStation />} />
 
-        <Route path="/" children={<Stations/>} />
-        
-
-      </Switch>
-    </HashRouter>
+          <Route path="/" children={<Stations />} />
+        </Switch>
+      </HashRouter>
     </div>
-  )
-}
+  );
+};
 
 // const getData = async () => {
 //   const stationsResponse = await fetch('/data/stations.json');
