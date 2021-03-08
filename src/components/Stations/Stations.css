@@ -11,3 +11,12 @@
     font-size: x-large;
 }
 
+.stationLink{
+    color: black;
+    text-decoration: none;
+}
+
+.stationLink:hover{
+    background: rgb(185, 235, 250);
+}
+

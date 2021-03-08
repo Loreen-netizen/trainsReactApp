@@ -39,7 +39,7 @@ const Stations = () => {
                         id,
                         name: data[id]
                     }))
-                    .map(({id,name}) => <li className="listItems" key={id}><StationIcon/>{name}</li>)
+                    .map(({id,name}) => <li className="listItems" key={id}><StationIcon/><a href={`#/station/${id}`} className="stationLink">{name}</a></li>)
                 }
 
             </ul>

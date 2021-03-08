@@ -1,38 +1,54 @@
 import './App.css';
 import Header from "../Header/Header"
 import Stations from "../Stations/Stations"
+import SingleStation from "../SingleStation/SingleStation"
 
-// const GetTrains = async () => {
+import React from "react";
+import {
+  HashRouter,
+  Switch,
+  Route,
+} from "react-router-dom";
 
-//   let trainsObj2 = await getData('/data/trains.json');
-//   let arr = [];
-//   let obj2 = arr.push(trainsObj2) 
-//   console.log({obj2})
-//   await obj2.map(train => { return <li>{train}</li> });
-
-// }
 const App = () => {
-
-  const getData = async () => {
-    const stationsResponse = await fetch('/data/stations.json');
-    const trainsRespnse = await fetch('/data/trains.json');
-
-    const stationsData = await stationsResponse.json();
-    const trainsData = await trainsRespnse.json();
-    console.log(stationsData);
-    console.log(trainsData);
-
-  }
-
   return (
     <div>
+    <Header />
+    <HashRouter>
+      <Switch>
+  
+        <Route path="/station/:id" children={<SingleStation/>}/>
+          
 
-      <Header />
-      <Stations />
-      <button onClick = {getData}>logData</button>
+        <Route path="/" children={<Stations/>} />
+        
 
+      </Switch>
+    </HashRouter>
     </div>
-  );
+  )
 }
+
+// const getData = async () => {
+//   const stationsResponse = await fetch('/data/stations.json');
+//   const trainsRespnse = await fetch('/data/trains.json');
+
+//   const stationsData = await stationsResponse.json();
+//   const trainsData = await trainsRespnse.json();
+//   console.log(stationsData);
+//   console.log(trainsData);
+
+// }
+
+// return (
+//   <div>
+
+//     <Header />
+//     <Stations />
+//     <button onClick = {getData}>logData</button>
+
+//   </div>
+// );
+// }
 
 export default App;
