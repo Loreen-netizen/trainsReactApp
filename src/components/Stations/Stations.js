@@ -16,22 +16,19 @@ const Stations = () => {
 
     if (!stations) {
         return (
-            <ul className="stationsList">
-                <li className="listItems"><StationIcon/> Loading stations.....</li>
-                <li className="listItems"><StationIcon/> Loading stations.....</li>
-                <li className="listItems"><StationIcon/> Loading stations.....</li>
-                <li className="listItems"><StationIcon/> Loading stations.....</li>
-                <li className="listItems"><StationIcon/> Loading stations.....</li>
-                <li className="listItems"><StationIcon/> Loading stations.....</li>
-               
-            </ul>)
+            <div className="stationsList">
+                <h2 className="listItems"><StationIcon/> Loading stations.....</h2>
+                <h2 className="listItems"><StationIcon/> Loading stations.....</h2>
+                <h2 className="listItems"><StationIcon/> Loading stations.....</h2>
+                <h2 className="listItems"><StationIcon/> Loading stations.....</h2>
+                <h2 className="listItems"><StationIcon/> Loading stations.....</h2>
+        
+            </div>)
 
     }
     return (
 
-        <div>
-
-            <ul className="stationsList">
+        <div className="stationsList">
                 {
                     Object
                     .keys(stations)
@@ -39,11 +36,11 @@ const Stations = () => {
                         id,
                         name: stations[id]
                     }))
-                    .map(({id,name}) => <li className="listItems" key={id}><StationIcon/><a href={`#/station/${id}`} className="stationLink">{name}</a></li>)
+                    .map(({id,name}) => <h2 className="listItems" key={id}><StationIcon/><a href={`#/station/${id}`} className="stationLink">{name}</a></h2>)
                 }
 
-            </ul>
-        </div>
+            </div>
+       
 
     )
 }

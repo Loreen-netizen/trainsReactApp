@@ -1,16 +1,19 @@
 import "./SingleStation.css";
 import { useEffect, useState } from "react";
+import {useParams} from "react-router-dom";
 
 // import {
-//     HashRouter,
-//     Switch,
-//     Route,
-//     useParams
+//   //     HashRouter,
+//   //     Switch,
+//   //     Route,
+//   useParams,
 // } from "react-router-dom";
 
 const SingleStation = () => {
   const [trains, setTrains] = useState(null);
-
+  debugger;
+  const { stationId } = await useParams();
+  console.log({stationId})
   const getData = async () => {
     const response = await fetch("/data/trains.json");
     const data = await response.json();
@@ -21,28 +24,30 @@ const SingleStation = () => {
 
   useEffect(() => getData(), []);
 
-  // const { id } = useParams()
   if (!trains) {
     return (
-      <ul>
-        <li className="trainsList"> Loading trains.....</li>
-        <li className="trainsList"> Loading trains.....</li>
-        <li className="trainsList"> Loading trains.....</li>
-        <li className="trainsList"> Loading trains.....</li>
-        <li className="trainsList"> Loading trains.....</li>
-      </ul>
+      <div>
+        <h2>station:{stationId}</h2>
+        <h3> Loading trains.....</h3>
+      </div>
     );
   }
 
   return (
     <div>
-      <ul>
-        {Object.keys(trains).map((letter) => (
-          <li className="trainsList" key={letter}>
+      <h2>station:{stationId}</h2>
+      {Object.keys(trains).map((letter) => (
+        <div>
+          <h2 className="trainsList" key={letter}>
             Train {letter}
-          </li>
-        ))}
-      </ul>
+          </h2>
+          <ul>
+            <li>14:00</li>
+            <li>14:00</li>
+            <li>14:00</li>
+          </ul>
+        </div>
+      ))}
     </div>
   );
 };
