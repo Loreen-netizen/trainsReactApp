@@ -12,7 +12,7 @@ const App = () => {
       <Header />
       <HashRouter>
         <Switch>
-          <Route path="/station/:id" children={<SingleStation />} />
+          <Route path="/station/:stationId" children={<SingleStation />} />
 
           <Route path="/" children={<Stations />} />
         </Switch>

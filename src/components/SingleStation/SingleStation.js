@@ -36,11 +36,15 @@ const SingleStation = () => {
 
   return (
     <div>
-        <a href="#/" className="homepagelink"> Back to Homepage</a>
+      <a href="#/" className="homepagelink">
+        Back to Homepage
+      </a>
       <h2 className="stationName">station:{stations[stationId]}</h2>
       <div className="trains-grid">
         {Object.keys(trains).map((trainId) => (
-          <TrainTimes trainId={trainId} />
+          <TrainTimes 
+           trainId={trainId}
+           specificTrainTimes={trains[trainId]} />
         ))}
       </div>
     </div>
