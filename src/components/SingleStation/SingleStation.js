@@ -2,33 +2,33 @@ import "./SingleStation.css";
 import { useEffect, useState } from "react";
 //import {useParams} from "react-router-dom";
 
-import {
-      HashRouter,
-      Switch,
-      Route,
-  useParams,
-} from "react-router-dom";
+import { HashRouter, Switch, Route, useParams } from "react-router-dom";
 import TrainTimes from "../TrainTimes/TrainTimes";
 
 const SingleStation = () => {
+  const { stationId } = useParams();
   const [trains, setTrains] = useState(null);
-  
-  const { stationId } =  useParams();
-  (console.log({stationId}));
-  const getData = async () => {
-    const response = await fetch("/data/trains.json");
-    const data = await response.json();
-    console.log(data);
+  const [stations, setStations] = useState(null);
 
-    setTrains(data);
+  console.log({ stationId });
+  const getData = async () => {
+    const trainsResponse = await fetch("/data/trains.json");
+    const trainsData = await trainsResponse.json();
+    console.log(trainsData);
+    setTrains(trainsData);
+
+    const stationsResponse = await fetch("/data/stations.json");
+    const stationsData = await stationsResponse.json();
+    console.log(stationsData);
+    setStations(stationsData);
   };
 
   useEffect(() => getData(), []);
 
-  if (!trains) {
+  if (!trains || !stations) {
     return (
       <div>
-        <h2>station:{stationId}</h2>
+        <h3>Loading station.....</h3>
         <h3> Loading trains.....</h3>
       </div>
     );
@@ -36,10 +36,13 @@ const SingleStation = () => {
 
   return (
     <div>
-      <h2>station:{stationId}</h2>
-      {Object.keys(trains)
-      .map((trainId) => <TrainTimes trainId={trainId}/>)
-      }
+        <a href="#/" className="homepagelink"> Back to Homepage</a>
+      <h2 className="stationName">station:{stations[stationId]}</h2>
+      <div className="trains-grid">
+        {Object.keys(trains).map((trainId) => (
+          <TrainTimes trainId={trainId} />
+        ))}
+      </div>
     </div>
   );
 };

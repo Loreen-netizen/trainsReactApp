@@ -2,8 +2,26 @@
   list-style: none;
   margin: 1em;
   
-  
 }
+
+.stationName{
+    padding: 1em;
+}
+
+.trains-grid{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.homepagelink{
+  margin-top: 1rem;
+        color: rgb(92, 89, 89);
+        text-decoration: none;
+      
+}
+.homepagelink:hover {
+    background: rgb(236, 237, 238);
+  }
 
 .listItems {
   padding: 1em;
